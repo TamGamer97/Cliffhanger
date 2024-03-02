@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Level: 0</title>
+</head>
+<body>
+    <div style=" background: url(/Assets/BackgroundFilterd.png); width: 100vw; height: 100vh; position: absolute; z-index: -1; top: 0px; left: 0px; object-fit: cover; background-size:100% 100%;">
+    </div>
+
+    
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div style="width: 90vw; height: 90vh; background-color: #0D2E50; border-radius: 30px; margin-top: 35px; position: relative;">
+            <img src="Assets/Playbtn.png" onclick="location.href = '/index.html' " style="position: absolute; top: 20px; left: 20px; transform: rotate(180deg); cursor: pointer;"
+            >
+            <h1 id="levelTitle" style="color: white; font-size: 50px; text-align: center; text-decoration-line: underline;">Level 15</h1>
+            <h1 id="Statement" style="color: rgba(255, 255, 255, 0.862);; font-size: 20px; text-align: center;"></h1>
+
+            <h1 id="TaskDesc" style="color: rgba(255, 255, 255, 0.862);; font-size: 20px; text-align: center; top: 100px; position: absolute; width: 100%;"></h1>
+            
+            <h1 id="streakTxt" style="color: rgba(255, 255, 255, 0.862); font-size: 20px; position: absolute; top: 30px; right: 40px;">0 Points, 0 Streak</h1>
+            
+            <div style="display: flex; justify-content: center;">
+                <div id="fullProgressBar" style="width: 80vw; height: 20px; border-radius: 20px; background-color: #3D547A; margin-top: 250px; position: relative;">
+                    <div id="ProgressBar" style="width: 0%; height: 20px; border-radius: 20px; background-color: #1D7FE6; transition: 1s;"> </div>
+                    <h1 id="timer" style="color: rgba(255, 255, 255, 0.859); position: absolute; top: -70px;">00:00:00</h1>
+                    <h1 style="color: rgba(255, 255, 255, 0.859);; position: absolute; top: -70px; right: 0px;">02:00:00</h1>
+                </div>
+                
+            </div>
+            
+            <div style="display: flex; justify-content: center;">
+                <div id="streakSummary" style="width: 350px; height: 400px;position: relative; border-radius: 20px; visibility: hidden;">
+                    <h1 style="color: rgba(255, 255, 255, 0.862);; font-size: 25px; text-align: center; text-decoration-line: underline;">Streak Summary</h1> 
+                           
+                </div>
+                
+            </div>
+            
+            <div style="position: absolute; display: flex; justify-content: center; width: 100%; gap: 20px;">
+                
+                
+                <div onclick="startLevel()" class="btns" id="startBtn" style="width: 150px; height: 50px; background-color: #3D547A; position: relative; top: -100px; border-radius: 20px; display: block;">
+                    <h1 style="color: white; font-size: 20px; text-align: center;">Start</h1>
+                </div>
+                
+                <div onclick="completeTask()" class="btns" id="completeBtn" style="width: 150px; height: 50px; background-color: #3D547A; position: relative; top: -100px; border-radius: 20px; display: none;">
+                    <h1 style="color: white; font-size: 20px; text-align: center;">Complete</h1>
+                </div>
+                <div onclick="endTask()" class="btns" id="endBtn" style="width: 150px; height: 50px; background-color: #3D547A; position: relative; top: -100px; border-radius: 20px; display: none;">
+                    <h1 style="color: white; font-size: 20px; text-align: center;">End</h1>
+                </div>
+
+                <div onclick="nextLevel()" class="btns" id="nextLevelBtn" style="width: 150px; height: 50px; background-color: #3D547A; position: relative; top: 10px; border-radius: 20px; display: none;">
+                    <h1 style="color: white; font-size: 20px; text-align: center;">Next Level</h1>
+                </div>
+
+                <div onclick="location.href ='/index.html' " class="btns" id="backHomeBtn" style="width: 150px; height: 50px; background-color: #3D547A; position: relative; top: 10px; border-radius: 20px; display: none;">
+                    <h1 style="color: white; font-size: 20px; text-align: center;">Return Home</h1>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script>
+
+    var levelStarted = false
+    var countdownTimer;
+    var level;
+
+    var levelCompleted = false
+
+    var pointsEarned=25;
+
+    const tasks = [
+        {Level: 1, task: 'Behovsanalysera kunden ifall det finns fler mobila tjänster dom önskar lägga till i företaget'},
+        {Level: 2, task: 'Kontrollera med kunden ifall dom har fler adresser dom är verksamma på då vi har möjlighet att ansluta deras företag till Fiber'},
+        {Level: 3, task: 'Förläng 2 abonnemang'},
+        {Level: 4, task: 'Behovsanalysera kundens inkommande trafik och fråga hur det kommer sig att kunden inte har ett fastnummer till företaget ännu'},
+        {Level: 5, task: 'Erbjud möjlighet att ordna ett fastnummer till kunden samt ett riktigt bra nummer'},
+        {Level: 6, task: 'Erbjud möjligheten att se över ifall vi kan sänka deras kostnader genom att flytta tjänsterna till företag'},
+        {Level: 7, task: 'Nyteckna 1 abonnemang'},
+        {Level: 8, task: 'Nyteckna ett fiber eller ett mobilt bredband'},
+        {Level: 9, task: 'Förläng 2 abonnemang'},
+        {Level: 10, task: 'Behovsanalysera om det finns fler i företaget som behöver en mobil tjänst'},
+        {Level: 11, task: 'Se över ifall kunden önskar en ny mobiltelefon, vi har möjlighet att lägga det mot 24 eller 36 månaders delbetalning'},
+        {Level: 12, task: 'Erbjud kunden det som går att förlänga, om kunden tackar nej, be om att få återkomma'},
+        {Level: 13, task: 'Förläng ett mobilt bredband eller fiber'},
+        {Level: 14, task: 'Nyteckna eller förläng ett abonnemang'},
+        {Level: 15, task: 'Nyteckna valfritt abonnemang'},
+        {Level: 16, task: 'Se över behovet av fastnummer'},
+        {Level: 17, task: 'Se över behovet av fler mobilnummer'},
+        {Level: 18, task: 'Förläng 2 abonnemang'},
+        {Level: 19, task: 'Teckna en fibertjänst'},
+        {Level: 20, task: 'Teckna ett fastnummer'},
+        {Level: 21, task: 'Teckna ett nytt abonnemang'},
+        {Level: 22, task: 'Erbjud en offert samt återkoppling'},
+        {Level: 23, task: 'Erbjud dig att genom att förnya eller teckna avtal med dig så kan dom vända sig till dig som kontaktperson'},
+        {Level: 24, task: 'Förläng 1 abonnemang'},
+        {Level: 25, task: 'Nyteckna valfritt abonnemang'},
+        {Level: 26, task: 'Nyteckna mobilabonnemang'},
+        {Level: 27, task: 'Nyteckna Fibertjänst'},
+        {Level: 28, task: 'Nyteckna Växel'},
+        {Level: 29, task: 'Nyteckna Mobilt Bredband'},
+        {Level: 30, task: 'Nyteckna 4 tjänster'},
+    ]
+
+    
+    addEventListener('load', () => {
+        level = Cookies.get('level')
+        console.log(level)
+
+        document.getElementById('title').innerHTML = 'Level: ' + level
+        document.getElementById('levelTitle').innerHTML = 'Level ' + level
+        updateStreakCounter()
+
+        document.getElementById('TaskDesc').innerHTML = tasks[JSON.parse(level)].task
+    })
+
+    function updateStreakCounter()
+    {
+        var streakSummary = Cookies.get('streakSummary')
+        if(streakSummary != undefined)
+        {
+            streakSummary = JSON.parse(streakSummary)
+
+            var totalPoints = 0
+
+            for (streakIndx in streakSummary)
+            {
+                var streak = streakSummary[streakIndx]
+                totalPoints = totalPoints + streak.points
+
+            }
+
+            document.getElementById('streakTxt').innerHTML = totalPoints + ' Points, ' + streakSummary.length + ' Streak'
+        }
+    }
+
+
+    function startLevel()
+    {
+        levelStarted = true
+        
+        document.getElementById('completeBtn').style.display = 'block'
+        document.getElementById('endBtn').style.display = 'block'
+
+        document.getElementById('startBtn').style.display = 'none'
+
+        countdown(2) // in terms of hours // use 0.0166666667 for 1 minute
+    }
+
+    function completeTask()
+    {
+        clearInterval(countdownTimer);
+
+        levelCompleted = true
+
+        document.getElementById('completeBtn').style.display = 'none'
+        document.getElementById('endBtn').style.display = 'block'
+        document.getElementById('endBtn').style.top = '10px'
+        document.getElementById('TaskDesc').style.display = 'none'
+
+        document.getElementById('nextLevelBtn').style.display = 'block'
+        document.getElementById('fullProgressBar').style.display = 'none'
+
+        document.getElementById('levelTitle').innerHTML = 'Well Done!'
+
+        // high scores commented because only saves on 3rd streak
+        // var hs = Cookies.get('highscore')
+        // console.log(hs)
+        // hs = JSON.parse(hs)
+
+        // hs.push({level: level, points: pointsEarned, time: document.getElementById('timer').innerHTML})
+
+        // var stringedHs = JSON.stringify(hs)
+        // console.log(stringedHs)
+        // Cookies.set('highscore', stringedHs)
+
+        // calculate points
+        var pointsAccumulated = 0
+
+        var h = document.getElementById('timer').innerHTML.split(':')[0] // 02:00:00
+        var m = document.getElementById('timer').innerHTML.split(':')[1] // 02:00:00
+        var s = document.getElementById('timer').innerHTML.split(':')[2] // 02:00:00
+
+        if(h[0] == '0') {h = h[1]}
+        if(m[0] == '0') {m = m[1]}
+        if(s[0] == '0') {s = s[1]}
+
+        var timeMins = (JSON.parse(h) * 60) + JSON.parse(m) + ((JSON.parse(s)) / 60)
+        timeMins = 120 - timeMins
+
+        if(timeMins >= 0 && timeMins <= 60)
+        {
+            pointsAccumulated = 20
+        }
+        if(timeMins > 60 && timeMins <= 90)
+        {
+            pointsAccumulated = 10
+        }
+        if(timeMins > 90 && timeMins < 120)
+        {
+            pointsAccumulated = 5
+        }
+
+        pointsEarned = pointsAccumulated
+
+
+
+        // update streak
+        var streakSummary = Cookies.get('streakSummary')
+        if(streakSummary == undefined) // first streak competed so create the streak list
+        {
+            streakSummary = [ ]
+        }else{
+            streakSummary = JSON.parse(streakSummary)
+        }
+
+
+        streakSummary.push({level: level, points: pointsAccumulated, time: document.getElementById('timer').innerHTML})
+        streakSummaryStringified = JSON.stringify(streakSummary)
+        Cookies.set('streakSummary', streakSummaryStringified)
+
+        updateStreakCounter()
+
+        if(streakSummary.length <2)
+        {
+            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak' + '<br> You need to complete at least 2 streaks to save to your high score'
+        }else{
+            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak'
+        }
+
+    }
+
+    function endTask()
+    {
+        clearInterval(countdownTimer);
+        document.getElementById('TaskDesc').style.display = 'none'
+
+        document.getElementById('completeBtn').style.display = 'none'
+        document.getElementById('endBtn').style.display = 'none'
+
+        document.getElementById('backHomeBtn').style.display = 'block'
+        document.getElementById('fullProgressBar').style.display = 'none'
+        document.getElementById('nextLevelBtn').style.display = 'none'
+
+        if(levelCompleted == false)
+        {
+            document.getElementById('levelTitle').innerHTML = 'Try Again'
+            document.getElementById('Statement').innerHTML = 'You have earned 0 Points from level ' + level
+        }
+
+        loadStreakSummary()
+    }
+
+    function timeRunOut()
+    {
+        clearInterval(countdownTimer);
+
+        document.getElementById('TaskDesc').style.display = 'none'
+
+        document.getElementById('completeBtn').style.display = 'none'
+        document.getElementById('endBtn').style.display = 'none'
+
+        document.getElementById('backHomeBtn').style.display = 'block'
+        document.getElementById('fullProgressBar').style.display = 'none'
+
+        document.getElementById('Statement').innerHTML = 'You have run out of time for level '+level+' and earned 0 Points'
+
+        loadStreakSummary()
+    }
+
+    function nextLevel()
+    {
+        var hs = Cookies.get('highscore')
+        hs = JSON.parse(hs)
+
+        let newlevel;
+        while (true)
+        {
+            var maxNum = 30
+            newlevel = Math.floor((Math.random() * maxNum) + 1);
+
+            var foundUnique = true
+            for (high in hs)
+            {
+                if(hs[high].level == newlevel)
+                {
+                    foundUnique = false
+                    break
+                }
+            }
+
+            if(foundUnique){break}
+        }
+
+        Cookies.set('level', newlevel)
+        location.href = '/game.html'
+    }
+
+    function loadStreakSummary()
+    {
+
+        // check if stream summary avaiable (only avaible if on 3rd streak or higher)
+        var streakSummary = Cookies.get('streakSummary')
+        if(streakSummary == undefined) {return} // no streaks found, failed first streak
+        streakSummary = JSON.parse(streakSummary)
+
+        var enoughStreaks = true
+
+        if(streakSummary.length <2 ) // not enough streaks
+        {
+            enoughStreaks = false
+            document.getElementById('Statement').innerHTML = 'You have gained no points as you only have a streak of ' + streakSummary.length + '<br> A streak of 2 is needed to save your points'
+
+            document.getElementById('levelTitle').innerHTML = 'Try Again'
+        }
+
+
+
+
+        document.getElementById('streakSummary').style.visibility = 'visible'
+
+        for (streakIndx in streakSummary)
+        {
+            var streak = streakSummary[streakIndx]
+
+            if(streak.level == 0) {continue;}
+            
+            const elem = document.createElement("h1");
+            elem.style = 'color: rgba(255, 255, 255, 0.843); font-size: 18px; text-align: center;'
+            if(enoughStreaks == true)
+            {
+                elem.innerHTML = 'level ' + streak.level + ': ' + streak.points + ' Points, ' + streak.time + ' Time'
+            }else{
+                elem.innerHTML = 'You did not gain ' + streak.points + ' points from level ' + streak.level
+            }
+            document.getElementById('streakSummary').appendChild(elem);
+            
+            
+            // for each streak save to high score
+            if(enoughStreaks == true)
+            {
+                var hs = Cookies.get('highscore')
+                console.log(hs)
+                hs = JSON.parse(hs)
+        
+                hs.push({level: streak.level, points: streak.points, time: streak.time})
+        
+                var stringedHs = JSON.stringify(hs)
+                console.log(stringedHs)
+                Cookies.set('highscore', stringedHs, {expires: 5})
+            }
+        }
+
+
+
+        
+    }
+
+    function countdown(hoursTarget)
+    {
+        // Set the date we're counting down to
+        var countDownDate = new Date();
+        if(hoursTarget >= 1)
+        {
+            countDownDate.setHours(countDownDate.getHours() + hoursTarget);
+        }else{
+            countDownDate.setMinutes(countDownDate.getMinutes() + Math.round(hoursTarget * 60))
+        }
+        
+        // Update the count down every 1 second
+        countdownTimer = setInterval(function() {
+            
+            // Get today's date and time
+            var now = new Date().getTime();
+            
+            
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if(hours < 10) {hours = '0' + hours}
+            if(minutes < 10) {minutes = '0' + minutes}
+            if(seconds < 10) {seconds = '0' + seconds}
+
+            // Display the result
+            document.getElementById("timer").innerHTML = hours + ":"
+            + minutes + ":" + seconds;
+
+            // Update progess bar
+            diffMins = distance / 60000
+
+            var accumulatedTime = (hoursTarget * 60) - (diffMins)
+
+            var percentage = ((accumulatedTime) / (hoursTarget * 60)) * 100
+            console.log(percentage)
+
+            document.getElementById('ProgressBar').style.width = percentage + '%'
+
+            // If the count down is finished
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                console.log('Time ran out')
+                timeRunOut()
+            }
+        }, 1000);
+    }
+
+</script>
+</html>
+
+<style>
+    @font-face{
+        font-family: ProximaNovaAltBold;
+        src: url(/Assets/Fonts/Proxima-Nova-Alt-Bold.otf);
+    }
+
+    body{
+        font-family: ProximaNovaAltBold;
+    }
+
+    .btns{
+        cursor: pointer;
+    }
+</style>
