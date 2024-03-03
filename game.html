@@ -184,7 +184,7 @@
         document.getElementById('nextLevelBtn').style.display = 'block'
         document.getElementById('fullProgressBar').style.display = 'none'
 
-        document.getElementById('levelTitle').innerHTML = 'Well Done!'
+        document.getElementById('levelTitle').innerHTML = 'Bra jobbat!'
 
         // high scores commented because only saves on 3rd streak
         // var hs = Cookies.get('highscore')
@@ -246,9 +246,9 @@
 
         if(streakSummary.length <2)
         {
-            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak' + '<br> You need to complete at least 2 streaks to save to your high score'
+            document.getElementById('Statement').innerHTML = 'Du har klarat nivå '+level+' och tjänat '+pointsEarned+' poäng på din streak' + '<br> Du behöver klara minst 2 utmaningar för att det ska synas på din highscore'
         }else{
-            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak'
+            document.getElementById('Statement').innerHTML = 'Du har klarat nivå '+level+' och tjänat '+pointsEarned+' poäng på din streak'
         }
 
     }
@@ -267,8 +267,8 @@
 
         if(levelCompleted == false)
         {
-            document.getElementById('levelTitle').innerHTML = 'Try Again'
-            document.getElementById('Statement').innerHTML = 'You have earned 0 Points from level ' + level
+            document.getElementById('levelTitle').innerHTML = 'Börja om'
+            document.getElementById('Statement').innerHTML = 'Du fick inga poäng alls från denna nivå ' + level
         }
 
         loadStreakSummary()
@@ -286,7 +286,7 @@
         document.getElementById('backHomeBtn').style.display = 'block'
         document.getElementById('fullProgressBar').style.display = 'none'
 
-        document.getElementById('Statement').innerHTML = 'You have run out of time for level '+level+' and earned 0 Points'
+        document.getElementById('Statement').innerHTML = 'Ajdå! Du hann tyvärr inte i tid att lösa utmaning '+level+' och samlade 0 poäng.'
 
         loadStreakSummary()
     }
