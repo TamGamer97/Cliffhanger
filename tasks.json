@@ -1,0 +1,35 @@
+{
+    "data": [
+        {"Level": 1, "task": "Behovsanalysera kunden ifall det finns fler mobila tjänster dom önskar lägga till i företaget"},
+        {"Level": 2, "task": "Kontrollera med kunden ifall dom har fler adresser dom är verksamma på då vi har möjlighet att ansluta deras företag till Fiber"},
+        {"Level": 3, "task": "Förläng 2 abonnemang"},
+        {"Level": 4, "task": "Behovsanalysera kundens inkommande trafik och fråga hur det kommer sig att kunden inte har ett fastnummer till företaget ännu"},
+        {"Level": 5, "task": "Erbjud möjlighet att ordna ett fastnummer till kunden samt ett riktigt bra nummer"},
+        {"Level": 6, "task": "Erbjud möjligheten att se över ifall vi kan sänka deras kostnader genom att flytta tjänsterna till företag"},
+        {"Level": 7, "task": "Nyteckna 1 abonnemang"},
+        {"Level": 8, "task": "Nyteckna ett fiber eller ett mobilt bredband"},
+        {"Level": 9, "task": "Förläng 2 abonnemang"},
+        {"Level": 10, "task": "Behovsanalysera om det finns fler i företaget som behöver en mobil tjänst"},
+        {"Level": 11, "task": "Se över ifall kunden önskar en ny mobiltelefon, vi har möjlighet att lägga det mot 24 eller 36 månaders delbetalning"},
+        {"Level": 12, "task": "Erbjud kunden det som går att förlänga, om kunden tackar nej, be om att få återkomma"},
+        {"Level": 13, "task": "Förläng ett mobilt bredband eller fiber"},
+        {"Level": 14, "task": "Nyteckna eller förläng ett abonnemang"},
+        {"Level": 15, "task": "Nyteckna valfritt abonnemang"},
+        {"Level": 16, "task": "Se över behovet av fastnummer"},
+        {"Level": 17, "task": "Se över behovet av fler mobilnummer"},
+        {"Level": 18, "task": "Förläng 2 abonnemang"},
+        {"Level": 19, "task": "Teckna en fibertjänst"},
+        {"Level": 20, "task": "Teckna ett fastnummer"},
+        {"Level": 21, "task": "Teckna ett nytt abonnemang"},
+        {"Level": 22, "task": "Erbjud en offert samt återkoppling"},
+        {"Level": 23, "task": "Erbjud dig att genom att förnya eller teckna avtal med dig så kan dom vända sig till dig som kontaktperson"},
+        {"Level": 24, "task": "Förläng 1 abonnemang"},
+        {"Level": 25, "task": "Nyteckna valfritt abonnemang"},
+        {"Level": 26, "task": "Nyteckna mobilabonnemang"},
+        {"Level": 27, "task": "Nyteckna Fibertjänst"},
+        {"Level": 28, "task": "Nyteckna Växel"},
+        {"Level": 29, "task": "Nyteckna Mobilt Bredband"},
+        {"Level": 30, "task": "Nyteckna 4 tjänster"}
+    ]
+    
+}
