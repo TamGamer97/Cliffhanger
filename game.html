@@ -131,8 +131,8 @@
         level = Cookies.get('level')
         console.log(level)
 
-        document.getElementById('title').innerHTML = 'Level: ' + level
-        document.getElementById('levelTitle').innerHTML = 'Level ' + level
+        document.getElementById('title').innerHTML = 'Utmaning: ' + level
+        document.getElementById('levelTitle').innerHTML = 'Utmaning ' + level
         updateStreakCounter()
 
         document.getElementById('TaskDesc').innerHTML = tasks[JSON.parse(level)].task
