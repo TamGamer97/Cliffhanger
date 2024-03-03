@@ -1,6 +1,6 @@
 {
     "data": [
-        {"Level": 1, "task": "Behovsanalysera kunden ifall det finns fler mobila tjänster dom önskar lägga till i företaget genom att säga "Vi har just nu ett kanonbra erbjudande där ni kan ansluta fler mobila tjänster till ett bra pris, har ni samlat allt hos oss?""},
+        {"Level": 1, "task": "Behovsanalysera kunden ifall det finns fler mobila tjänster dom önskar lägga till i företaget genom att säga: Vi har just nu ett kanonbra erbjudande där ni kan ansluta fler mobila tjänster till ett bra pris, har ni samlat allt hos oss?"},
         {"Level": 2, "task": "Kontrollera med kunden ifall dom har fler adresser dom är verksamma på då vi har möjlighet att ansluta deras företag till Fiber"},
         {"Level": 3, "task": "Förläng 2 abonnemang"},
         {"Level": 4, "task": "Behovsanalysera kundens inkommande trafik och fråga hur det kommer sig att kunden inte har ett fastnummer till företaget ännu"},
