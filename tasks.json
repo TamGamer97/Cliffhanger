@@ -28,8 +28,7 @@
         {"Utmaning": 26, "task": "Nyteckna mobilabonnemang"},
         {"Utmaning": 27, "task": "Nyteckna Fibertjänst"},
         {"Utmaning": 28, "task": "Nyteckna Växel"},
-        {"Utmaning": 29, "task": "Nyteckna Mobilt Bredband"},
-        {"Utmaning": 30, "task": "Nyteckna 2 tjänster av valfri produkt"}
+        {"Utmaning": 29, "task": "Nyteckna Mobilt Bredband"}
     ]
     
 }
