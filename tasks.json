@@ -10,7 +10,7 @@
         {"Utmaning": 8, "task": "Nyteckna en fibertjänst eller ett mobilt bredband"},
         {"Utmaning": 9, "task": "Förläng 2 abonnemang eller nyteckna 1 abonnemang"},
         {"Utmaning": 10, "task": "Behovsanalysera med frågor om det finns fler i företaget som behöver en mobil tjänst"},
-        {"Utmaning": 11, "task": "Se över ifall kunden önskar en ny mobiltelefon, vi har möjlighet att lägga det mot 24 eller 36 månaders delbetalning och även rabattera den ifall det finns fler att samla under företaget"},
+        {"Utmaning": 11, "task": "Se över ifall kunden önskar en se över ev. ny hårdvara, vi har möjlighet att lägga det mot 24 eller 36 månaders delbetalning och även rabattera den ifall det finns fler att samla under företaget"},
         {"Utmaning": 12, "task": "Erbjud kunden det som går att förlänga, om kunden tackar nej, be om att få återkomma om det är aktuellt längre fram. Viktigt att boka ett datum."},
         {"Utmaning": 13, "task": "Förläng ett mobilt bredband/fiber eller nyteckna 1 mobilabonnemang"},
         {"Utmaning": 14, "task": "Nyteckna eller förläng valfritt abonnemang"},
@@ -18,7 +18,7 @@
         {"Utmaning": 16, "task": "Se över behovet av fastnummer"},
         {"Utmaning": 17, "task": "Se över behovet av fler mobilnummer, ta hjälp av Merinfo"},
         {"Utmaning": 18, "task": "Förläng 2 abonnemang eller nyteckna 1 mobilabonnemang"},
-        {"Utmaning": 19, "task": "Nyteckna en fibertjänst"},
+        {"Utmaning": 19, "task": "Nyteckna en fibertjänst eller säg till nästa KOAX kund: Du har förmåner på din adress? Har någon informerat dig om detta?"},
         {"Utmaning": 20, "task": "Nyteckna ett fastnummer"},
         {"Utmaning": 21, "task": "Nyteckna ett 1GB abonnemang eller Obegränsat Max"},
         {"Utmaning": 22, "task": "Nyteckna ett nytt mobilabonnemang alternativt skicka iväg en offert på ett nytt mobilabonnemang och be om att få ett datum och tidpunkt att återkoppla på"},
@@ -27,8 +27,8 @@
         {"Utmaning": 25, "task": "Nyteckna valfritt abonnemang"},
         {"Utmaning": 26, "task": "Nyteckna mobilabonnemang"},
         {"Utmaning": 27, "task": "Nyteckna Fibertjänst"},
-        {"Utmaning": 28, "task": "Nyteckna Växel"},
-        {"Utmaning": 29, "task": "Nyteckna Mobilt Bredband"}
+        {"Utmaning": 28, "task": "Nyteckna Växel eller Mobilabonnemang"},
+        {"Utmaning": 29, "task": "Nyteckna Mobilt Bredband eller Fiber"}
     ]
     
 }
