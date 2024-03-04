@@ -296,6 +296,19 @@
         var hs = Cookies.get('highscore')
         hs = JSON.parse(hs)
 
+        var prevGames = Cookies.get('completedLevels')
+        prevGames = JSON.parse(prevGames)
+
+        prevGames.push(level)
+
+        if(prevGames.length == 30)
+        {
+            prevGames = prevGames.slice(-5);
+        }
+        
+        var stringedPrev = JSON.stringify(prevGames)    
+        Cookies.set('completedLevels', stringedPrev)
+
         let newlevel;
         while (true)
         {
@@ -303,9 +316,9 @@
             newlevel = Math.floor((Math.random() * maxNum) + 1);
 
             var foundUnique = true
-            for (high in hs)
+            for (l in prevGames)
             {
-                if(hs[high].level == newlevel)
+                if(prevGames[l] == newlevel)
                 {
                     foundUnique = false
                     break
