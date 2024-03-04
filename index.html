@@ -106,6 +106,10 @@
 
     function loadLevel(level)
     {
+        
+        var levelsPlayed = []
+        var stringedLevels = JSON.stringify(levelsPlayed)
+        Cookies.set('completedLevels', stringedLevels)
 
         Cookies.remove('streakSummary') // resets streak
 
