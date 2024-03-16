@@ -29,7 +29,7 @@
         
             <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;">
                 <div onclick="playRandomLevel()" style="width: 250px; height: 75px; background-color: #3d547a; border-radius: 20px; position: absolute; top: 200px; cursor: pointer;">
-                    <h1 style="color: white; font-size: 25px; text-align: center; margin-top: 20px;">Starta</h1>
+                    <h1 style="color: white; font-size: 25px; text-align: center; margin-top: 20px;">Play</h1>
                 </div>
             </div>
             
@@ -43,7 +43,12 @@
                     <h1 style="color: white; font-size: 25px;">High Score</h1>
                     <img src="https://cliffhanger.netlify.app/Assets/TrophyBtn.png" style="width: 60px; height: 60px;">
                 </div>
-                
+                <div id="highscoreList" style="display: flex; justify-content: center; flex-direction: column; position: absolute; top: 70px; width: 100%; align-items: center; color: white;">
+                    <!-- <h1 style="color: rgba(255, 255, 255, 0.843); font-size: 18px;">level 15: 25 Points</h1> -->
+                    <h1 style="color: rgba(255, 255, 255, 0.843); font-size: 18px; margin-top: -10px;"> &#8205;</h1>
+
+                    <!-- <h1 style="color: rgba(255, 255, 255, 0.843); font-size: 18px; margin-top: -10px;">level 15: 25 Points</h1> -->
+                </div>
             </div>
 
         </div>
@@ -83,7 +88,8 @@
         // {Level: 26, task: 'Nyteckna mobilabonnemang'},
         // {Level: 27, task: 'Nyteckna Fibertjänst'},
         // {Level: 28, task: 'Nyteckna Växel'},
-        // {Level: 29, task: 'Nyteckna Mobilt Bredband'}
+        // {Level: 29, task: 'Nyteckna Mobilt Bredband'},
+        // {Level: 30, task: 'Nyteckna 4 tjänster'},
     ]
 
     function loadJSON() {
@@ -106,10 +112,6 @@
 
     function loadLevel(level)
     {
-        
-        var levelsPlayed = []
-        var stringedLevels = JSON.stringify(levelsPlayed)
-        Cookies.set('completedLevels', stringedLevels)
 
         Cookies.remove('streakSummary') // resets streak
 
@@ -151,42 +153,47 @@
         }
     }
 
-    //function loadHighscore()
+    function loadHighscore()
     {
         var hs = Cookies.get('highscore')
         if(hs == undefined)
         {
             console.log('init high score')
-            hs = [{level: 0}]
+            // hs = [{level: 0}]
+            hs = '0'
 
             var highScoreStringed = JSON.stringify(hs)
             Cookies.set('highscore', highScoreStringed)
         }else{
             hs = JSON.parse(hs)
+            console.log('hs: ')
+            console.log(hs)
+            document.getElementById('highscoreList').innerHTML = 'highscore: ' +  hs
         }
 
-        for (high in hs)
-        {
-            var h = hs[high]
 
-            if(h.level == 0) {continue;}
+        // for (high in hs)
+        // {
+        //     var h = hs[high]
+
+        //     if(h.level == 0) {continue;}
             
-            const elem = document.createElement("h1");
-            elem.style = 'color: rgba(255, 255, 255, 0.843); font-size: 18px; margin-top: -10px;'
-            elem.innerHTML = 'level ' + h.level + ': ' + h.points + ' Points, ' + h.time + ' Time'
-            document.getElementById('highscoreList').appendChild(elem);
-        }
+        //     const elem = document.createElement("h1");
+        //     elem.style = 'color: rgba(255, 255, 255, 0.843); font-size: 18px; margin-top: -10px;'
+        //     elem.innerHTML = 'level ' + h.level + ': ' + h.points + ' Points, ' + h.time + ' Time'
+        //     document.getElementById('highscoreList').appendChild(elem);
+        // }
 
-        if(hs.length > 5)
-        {
-            document.getElementById('highscoreContainer').style.height = '500px'
-        }
+        // if(hs.length > 5)
+        // {
+        //     document.getElementById('highscoreContainer').style.height = '500px'
+        // }
 
         
     }
 
     // loadLevels()
-    //loadHighscore()
+    loadHighscore()
 
 </script>
 </html>
