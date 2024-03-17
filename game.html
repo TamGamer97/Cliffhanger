@@ -172,7 +172,7 @@
         document.getElementById('nextLevelBtn').style.display = 'block'
         document.getElementById('fullProgressBar').style.display = 'none'
 
-        document.getElementById('levelTitle').innerHTML = 'Well Done!'
+        document.getElementById('levelTitle').innerHTML = 'BRA JOBBAT!💪 '
 
         // high scores commented because only saves on 3rd streak
         // var hs = Cookies.get('highscore')
@@ -234,9 +234,9 @@
 
         if(streakSummary.length <2)
         {
-            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak' + '<br> You need to complete at least 2 streaks to save to your high score'
+            document.getElementById('Statement').innerHTML = 'Du klarade utmaning '+level+' och tjänade '+pointsEarned+' poäng till din streak' + '<br>'
         }else{
-            document.getElementById('Statement').innerHTML = 'You have completed level '+level+' and added '+pointsEarned+' Points to your streak'
+            document.getElementById('Statement').innerHTML = 'Du klarade utmaning '+level+' och tjänade '+pointsEarned+' poäng till din streak'
         }
 
     }
